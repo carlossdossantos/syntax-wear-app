@@ -7,15 +7,18 @@ export const ShoppingCart = () => {
   const [cartIsOpen, setCartIsOpen] = useState<boolean>(false);
   const { cart, decrementInCart, incrementInCart, removeFromCart } = useContext(CartContext);
 
-  console.log("items no carrinho:", cart);
+  //console.log("items no carrinho:", cart);
 
   return (
     <>
       <button
-        className="cursor-pointer"
+        className="relative cursor-pointer"
         onClick={() => setCartIsOpen(!cartIsOpen)}
       >
         <img src={IconCart} alt="Ícone carrinho de compras" />
+        {cart.length > 0 && (
+          <span className="absolute -top-2 -right-3 bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs">{cart.length}</span>
+        )}
       </button>
 
       {/* { Overlay } */}
@@ -46,7 +49,7 @@ export const ShoppingCart = () => {
                             <p className="mb-1 text-sm">Quantidade: {product.quantity}</p>
 
                             <p className="mb-3.5">
-                                <span className="font-bold mr-1.5">{formatCurrency(product.price)}</span> {" "}
+                                <span className="font-bold mr-1.5">{formatCurrency(product.price * product.quantity)}</span> {" "}
                                 à vista
                             </p>
 
