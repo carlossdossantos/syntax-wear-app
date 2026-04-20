@@ -36,7 +36,7 @@ export const ShoppingCart = () => {
             <button className="text-xl cursor-pointer" onClick={() => setCartIsOpen(!cartIsOpen)}>X</button>
           </header>
 
-          <ul className="p-4 overflow-y-auto scrollbar-hide h-[calc(100%_-_140px)] flex flex-col gap-3">
+          <ul className="p-4 overflow-y-auto scrollbar-hide h-[calc(100%-140px)] flex flex-col gap-3">
              {cart.map(product => (
                 <li key={product.id} className="flex flex-col gap-1 px-6">
                     <button className="self-end text-xs cursor-pointer" onClick={() => removeFromCart(product.id)}>X</button>
