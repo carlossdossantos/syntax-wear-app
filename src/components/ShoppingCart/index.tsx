@@ -12,7 +12,7 @@ export const ShoppingCart = () => {
   return (
     <>
       <button
-        className="relative cursor-pointer"
+        className="relative cursor-pointer flex items-center"
         onClick={() => setCartIsOpen(!cartIsOpen)}
       >
         <img src={IconCart} alt="Ícone carrinho de compras" />
