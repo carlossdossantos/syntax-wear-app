@@ -1,52 +1,73 @@
 # Syntax Wear App 👕
 
-O **Syntax Wear App** é uma aplicação moderna de e-commerce/catálogo de moda desenvolvida com foco em performance e experiência do desenvolvedor. O projeto utiliza as tecnologias mais recentes do ecossistema React para garantir um roteamento seguro e uma build extremamente rápida.
+O **Syntax Wear App** é uma plataforma de e-commerce de moda de alto desempenho, focada em proporcionar uma experiência de compra fluida e moderna. Desenvolvido com as tecnologias mais recentes do ecossistema React, o projeto prioriza a segurança de tipos (Type-safety), performance e uma interface intuitiva.
 
-## 🚀 Tecnologias Utilizadas
+## 🚀 Tecnologias e Ferramentas
 
-- **React 18+**: Biblioteca principal para construção da interface.
-- **TypeScript**: Tipagem estática para maior segurança e produtividade.
-- **Vite**: Ferramenta de build de última geração para um desenvolvimento ágil.
-- **TanStack Router**: Roteamento baseado em arquivos com segurança de tipos (Type-safe).
-- **ESLint**: Padronização de código e boas práticas.
+- **React 19**: Versão mais recente para construção de interfaces reativas.
+- **TypeScript**: Garantia de robustez e redução de erros em tempo de desenvolvimento.
+- **Vite**: Build system ultra-rápido.
+- **TanStack Router**: Roteamento baseado em arquivos com segurança de tipos nativa.
+- **Tailwind CSS**: Estilização moderna e responsiva com foco em utilitários.
+- **React Hook Form + Zod**: Gerenciamento de formulários complexos com validações rigorosas (CPF, Telefone, CEP, etc.).
+- **Context API**: Gerenciamento de estado global para o carrinho de compras.
+- **React Icons**: Conjunto de ícones consistente para toda a aplicação.
 
-## 📂 Estrutura de Pastas (Principais)
+## ✨ Funcionalidades Principais
+
+- **Catálogo de Produtos**: Listagem dinâmica de produtos com filtros por categoria.
+- **Carrinho de Compras**: Sistema completo de adição, remoção e ajuste de quantidades, persistido via contexto.
+- **Busca de CEP**: Integração de formulário para cálculo/preenchimento de endereço.
+- **Autenticação**: Telas de Login e Cadastro com validações em tempo real.
+- **Interface Responsiva**: Design adaptável para dispositivos móveis, tablets e desktops.
+- **Galeria de Imagens**: Exibição detalhada de produtos e coleções.
+
+## 📂 Organização do Projeto
 
 ```text
 src/
-├── components/     # Componentes reutilizáveis (Header, Footer, etc.)
-├── pages/          # Estrutura de rotas da aplicação
-│   └── _app/       # Layout principal e rotas autenticadas/internas
-└── main.tsx        # Ponto de entrada da aplicação
+├── assets/          # Imagens, fontes e ícones estáticos
+├── components/      # Componentes UI reutilizáveis (Button, Card, Drawer, etc.)
+├── contexts/        # Provedores de estado global (Ex: CartContext)
+├── interfaces/      # Definições de tipos e contratos de dados
+├── mocks/           # Dados fictícios para desenvolvimento (Produtos, Categorias)
+├── pages/           # Estrutura de rotas (TanStack Router)
+│   ├── _app/        # Rotas da aplicação principal (Layout, Home, Produtos)
+│   └── _auth/       # Rotas de autenticação (Login, Cadastro)
+├── styles/          # Estilos globais e configurações CSS
+└── utils/           # Funções utilitárias (Validadores de CPF, Formatação de Moeda)
 ```
 
-## 🛣️ Roteamento
+## 🛣️ Estrutura de Rotas
 
-A aplicação utiliza o roteamento baseado em arquivos do **TanStack Router**. 
-- O layout principal está definido em `src/pages/_app/layout.tsx`, que gerencia o posicionamento fixo do `<Header />` e `<Footer />`, utilizando o componente `<Outlet />` para renderizar as sub-rotas.
+A aplicação utiliza o **TanStack Router** para um roteamento 100% type-safe:
 
-## 🛠️ Como rodar o projeto
+- `/`: Home com destaques e categorias.
+- `/products`: Listagem completa de produtos.
+- `/products/$productId`: Detalhes de um produto específico.
+- `/products/category/$category`: Filtragem por categoria.
+- `/about`: Informações sobre a marca.
+- `/our-stores`: Localização das lojas físicas.
+- `/sign-in` & `/sign-up`: Fluxos de acesso do usuário.
 
-1.  **Instale as dependências:**
-    ```bash
-    npm install
-    ```
+## 🛠️ Instalação e Execução
 
-2.  **Inicie o servidor de desenvolvimento:**
-    ```bash
-    npm run dev
-    ```
+1. **Clonar e instalar dependências:**
+   ```bash
+   npm install
+   ```
 
-3.  **Para gerar a build de produção:**
-    ```bash
-    npm run build
-    ```
+2. **Desenvolvimento (com Hot Reload):**
+   ```bash
+   npm run dev
+   ```
 
-## 📝 Notas de Desenvolvimento
-
-- Este projeto foi configurado inicialmente usando o template `react-ts` do Vite.
-- O roteamento é configurado para ser totalmente *Type-safe*, o que significa que o compilador avisará sobre erros em links e parâmetros de rotas antes mesmo de você rodar o app.
+3. **Produção:**
+   ```bash
+   npm run build
+   # Para visualizar a build:
+   npm run preview
+   ```
 
 ---
-Desenvolvido como parte do Curso Webmaster.
-
+Desenvolvido como projeto prático no **Curso Webmaster**, focado em melhores práticas de desenvolvimento Front-end.
