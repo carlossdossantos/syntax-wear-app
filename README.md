@@ -1,73 +1,52 @@
-# React + TypeScript + Vite
+# Syntax Wear App 👕
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+O **Syntax Wear App** é uma aplicação moderna de e-commerce/catálogo de moda desenvolvida com foco em performance e experiência do desenvolvedor. O projeto utiliza as tecnologias mais recentes do ecossistema React para garantir um roteamento seguro e uma build extremamente rápida.
 
-Currently, two official plugins are available:
+## 🚀 Tecnologias Utilizadas
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **React 18+**: Biblioteca principal para construção da interface.
+- **TypeScript**: Tipagem estática para maior segurança e produtividade.
+- **Vite**: Ferramenta de build de última geração para um desenvolvimento ágil.
+- **TanStack Router**: Roteamento baseado em arquivos com segurança de tipos (Type-safe).
+- **ESLint**: Padronização de código e boas práticas.
 
-## React Compiler
+## 📂 Estrutura de Pastas (Principais)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```text
+src/
+├── components/     # Componentes reutilizáveis (Header, Footer, etc.)
+├── pages/          # Estrutura de rotas da aplicação
+│   └── _app/       # Layout principal e rotas autenticadas/internas
+└── main.tsx        # Ponto de entrada da aplicação
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🛣️ Roteamento
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+A aplicação utiliza o roteamento baseado em arquivos do **TanStack Router**. 
+- O layout principal está definido em `src/pages/_app/layout.tsx`, que gerencia o posicionamento fixo do `<Header />` e `<Footer />`, utilizando o componente `<Outlet />` para renderizar as sub-rotas.
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## 🛠️ Como rodar o projeto
+
+1.  **Instale as dependências:**
+    ```bash
+    npm install
+    ```
+
+2.  **Inicie o servidor de desenvolvimento:**
+    ```bash
+    npm run dev
+    ```
+
+3.  **Para gerar a build de produção:**
+    ```bash
+    npm run build
+    ```
+
+## 📝 Notas de Desenvolvimento
+
+- Este projeto foi configurado inicialmente usando o template `react-ts` do Vite.
+- O roteamento é configurado para ser totalmente *Type-safe*, o que significa que o compilador avisará sobre erros em links e parâmetros de rotas antes mesmo de você rodar o app.
+
+---
+Desenvolvido como parte do Curso Webmaster.
+
