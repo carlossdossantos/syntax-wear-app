@@ -1,39 +1,34 @@
-import IconCart from "@/assets/images/icon-cart.png";
-import { useContext, useState } from "react";
-import { formatCurrency } from "../../utils/currency-format";
+import { useContext } from "react";
 import { CartContext } from "../../contexts/CartContext";
+import { formatCurrency } from "../../utils/currency-format";
 
-export const ShoppingCart = () => {
-  const [cartIsOpen, setCartIsOpen] = useState<boolean>(false);
-  const { cart, decrementInCart, incrementInCart, removeFromCart } = useContext(CartContext);
+interface CartDrawerProps{
+    isOpen: boolean;
+    onClose: () => void;
+}
 
-  //console.log("items no carrinho:", cart);
+export const CartDrawer = ({ isOpen, onClose }: CartDrawerProps ) => {
 
-  return (
-    <>
-      <button
-        className="relative cursor-pointer flex items-center"
-        onClick={() => setCartIsOpen(!cartIsOpen)}
-      >
-        <img src={IconCart} alt="Ícone carrinho de compras" />
-        {cart.length > 0 && (
-          <span className="absolute -top-2 -right-3 bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs">{cart.length}</span>
-        )}
-      </button>
+    const { cart , decrementInCart, incrementInCart, removeFromCart } = useContext(CartContext);
 
+    return (
+        <>
       {/* { Overlay } */}
       <div
-        className={`${cartIsOpen ? "bg-black/70 visible" : "bg-transparent invisible"} fixed top-0 bottom-0 left-0 right-0`}
-        onClick={() => setCartIsOpen(!cartIsOpen)}
+        className={`${isOpen ? "bg-black/70 visible" : "bg-transparent invisible"} text-black fixed inset-0 z-50 transition-all duration-600 ease-in-out`}
+        onClick={onClose}
       >
-        {/* { Drawer } */}
+        {/* { Drawer } 
+           translate-x-0 - posição normal da drawer
+           translate-x-full - fora da tela (para a direita)
+        */}
         <div
-          className={`${cartIsOpen ? "translate-x-0" : "translate-x-full"} absolute top-0 right-0 bottom-0 bg-white pt-6 transition-all duration-500 ease-in-out w-75 md:w-106`}
+          className={`${isOpen ? "translate-x-0" : "translate-x-full"} absolute top-0 right-0 bottom-0 bg-white pt-6 transition-all duration-500 ease-in-out w-75 md:w-100 `}
           onClick={(e) => e.stopPropagation()}
         >
           <header className="flex items-center justify-between px-5">
             <p className="text-2xl font-bold">Carrinho ({cart.length})</p>
-            <button className="text-xl cursor-pointer" onClick={() => setCartIsOpen(!cartIsOpen)}>X</button>
+            <button className="text-xl cursor-pointer" onClick={onClose}>X</button>
           </header>
 
           <ul className="p-4 overflow-y-auto scrollbar-hide h-[calc(100%-140px)] flex flex-col gap-3">
@@ -72,5 +67,5 @@ export const ShoppingCart = () => {
         </div>
       </div>
     </>
-  );
-};
+    );
+}

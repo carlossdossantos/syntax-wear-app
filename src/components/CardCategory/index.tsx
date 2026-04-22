@@ -23,9 +23,9 @@ export const CardCategory = () => {
                 <div
                     key={index}
                     className="
-                        flex-shrink-0 w-[95%] h-[500px] rounded-[20px] flex flex-col justify-center items-center gap-2.5 overflow-hidden relative snap-center
+                        shrink-0 w-[95%] h-125 rounded-[20px] flex flex-col justify-center items-center gap-2.5 overflow-hidden relative snap-center
                         md:w-1/2
-                        lg:w-auto lg:flex-shrink
+                        lg:w-auto lg:shrink
                     "
                     style={{
                         backgroundImage: `url(${category.image})`,
