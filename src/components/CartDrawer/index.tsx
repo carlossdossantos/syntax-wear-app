@@ -37,7 +37,7 @@ export const CartDrawer = ({ isOpen, onClose }: CartDrawerProps ) => {
                     <button className="self-end text-xs cursor-pointer" onClick={() => removeFromCart(product.id)}>X</button>
 
                     <div className="flex gap-4">
-                        <img src={product.image} alt={product.name} className="w-16 h-16" />
+                        <img src={product.images[0]} alt={product.name} className="w-16 h-16" />
 
                         <div className="flex flex-col items-start">
                             <p className="mb-1 text-sm">{product.name}</p>
