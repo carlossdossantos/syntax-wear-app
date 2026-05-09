@@ -4,6 +4,8 @@ import { useState } from "react";
 import { FaRegUserCircle } from "react-icons/fa";
 import type { NavLink } from "../Header";
 import { IoMdClose } from "react-icons/io";
+import { useAuth } from "../../contexts/AuthContext/AuthContext";
+import { PiSignOutLight } from "react-icons/pi";
 
 interface MenuMobileProps{
     navLinks: NavLink[];
@@ -11,6 +13,18 @@ interface MenuMobileProps{
 
 export const MenuMobile = ({navLinks} : MenuMobileProps) => {
   const [menuIsOpen, setmenuIsOpen] = useState<boolean>(false);
+
+  //const navigate = useNavigate();
+
+  const {isAuthenticated, user, signOut} = useAuth();
+
+  const handleSignOut =  async () => {
+       try {
+        await signOut();
+       } catch (error) {
+         console.error("Erro ao fazer logout:", error);
+       }
+  }
   
   //console.log("items no carrinho:", cart);
 
@@ -38,7 +52,9 @@ export const MenuMobile = ({navLinks} : MenuMobileProps) => {
              <nav className="flex justify-between">
                 <Link to="/sign-in" className="flex items-center gap-3">
                 <FaRegUserCircle className="h-6 w-6" />
-                <p>Olá! Faça seu login</p>
+                
+                {isAuthenticated ? <p>Olá, {user?.firstName} {user?.lastName}</p> : <p>Olá, Faça seu login</p>}
+
                 </Link>
                 <IoMdClose className="cursor-pointer" onClick={() => setmenuIsOpen(!menuIsOpen)} />
              </nav>
@@ -55,6 +71,16 @@ export const MenuMobile = ({navLinks} : MenuMobileProps) => {
               <li>
                 <Link to="/about" onClick={() => setmenuIsOpen(!menuIsOpen)}>Sobre</Link>
               </li>
+
+              {
+                isAuthenticated && (
+                  <li>
+                      <button onClick={handleSignOut} className="cursor-pointer hover:opacity-70 transition-opacity flex items-center gap-2">Sair
+                        <PiSignOutLight className="w-6 h-6"></PiSignOutLight>
+                      </button>
+                  </li>
+                )
+              }
           </ul>
 
         </div>
