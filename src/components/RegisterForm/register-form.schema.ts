@@ -35,7 +35,7 @@ export const registerUserFormSchema = z
   });
 
 
-type RegisterFormData = z.infer<typeof registerUserFormSchema>;
+export type RegisterFormData = z.infer<typeof registerUserFormSchema>;
 
 export const useRegisterForm = () => {
   const {
